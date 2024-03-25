@@ -5,26 +5,30 @@ import CustomPopup from "./CustomPopup";
 function UserDetails(props) {
 const [user, setUser] = useState('');
 const [age, setAge] = useState('');
+const [collegeName, setcollegeName] = useState('');
 const [showEmptyFieldPopup, setShowEmptyFieldPopup] = useState(false);
 const [showNegativeAgePopup, setShowNegativeAgePopup] = useState(false);
 
 const userHandler = (e) =>{
-    e.preventDefault();
     setUser(e.target.value)
 }
 
 const ageHandler = (e) =>{
-    e.preventDefault();
     setAge(e.target.value)
+}
+
+const collegeNameHandler = (e) =>{
+    setcollegeName(e.target.value)
 }
 
 const formHandler =(e) =>{
     e.preventDefault();
     const userData = {
       user: user, 
-      age: age, 
+      age: age,
+      collegeName: collegeName,
       id: Math.random()};
-    if(user.trim() === "" || age === ""){
+    if(user.trim() === "" || age === "" || collegeName === ""){
       setShowEmptyFieldPopup(true)
     }else if( age<0){
       setShowNegativeAgePopup(true)
@@ -33,6 +37,7 @@ const formHandler =(e) =>{
     }
     setUser('');
     setAge('');
+    setcollegeName('');
 };
 
 const closeEmptyFieldHandler = () =>{
@@ -63,8 +68,17 @@ const closeNeagtiveValueHandler = () =>{
         value={age}
         type="number" />
 
+        <label
+        className="block font-bold"
+        >College Name</label>
+        <input 
+        className="border border-black w-full" 
+        onChange={collegeNameHandler}
+        value={collegeName}
+        type="text" />
+
         <button 
-        className="px-2 py-1 bg-blue-800 rounded mt-2 text-white"
+        className="px-2 py-1 bg-purple-800 rounded mt-2 text-white"
         type="submit"
         >Add User</button>
       </form>

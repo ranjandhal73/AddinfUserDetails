@@ -9,7 +9,7 @@ function DisplayUser(props) {
             className="mt-4 bg-white rounded-lg p-2 w-2/4 text-center"
             >
               <div className="border border-gray-500 text-lg">
-                {items.user} ({items.age} years old)
+                {items.user} ({items.age} years old) from {items.collegeName} College.
               </div>
             </div>
           );
